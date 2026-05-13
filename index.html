@@ -117,6 +117,19 @@
   .reset-btn { background: var(--surface); border: 1px solid var(--border); color: var(--muted); padding: 10px 20px; border-radius: 20px; font-family: 'Barlow', sans-serif; font-size: 21px; cursor: pointer; display: block; margin: 0 auto 20px; letter-spacing: 0.5px; }
   .reset-btn:active { background: var(--card); }
 
+  .weight-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border); }
+  .weight-label { font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+  .weight-input { background: var(--bg); border: 1.5px solid var(--border); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 26px; padding: 8px 12px; border-radius: 10px; width: 100px; text-align: center; -moz-appearance: textfield; }
+  .weight-input::-webkit-outer-spin-button, .weight-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .weight-input:focus { outline: none; border-color: var(--accent); background: #fff; }
+  .weight-unit { font-family: 'Barlow Condensed', sans-serif; font-size: 21px; font-weight: 600; color: var(--muted); letter-spacing: 0.5px; }
+  .weight-saved { margin-left: auto; font-size: 17px; color: var(--legs); opacity: 0; transition: opacity 0.3s; font-weight: 600; letter-spacing: 0.5px; }
+  .weight-saved.show { opacity: 1; }
+  .ex-card.has-weight, .circuit-card.has-weight { flex-wrap: wrap; }
+  .ex-card.has-weight > .ex-num, .ex-card.has-weight > .ex-info, .ex-card.has-weight > .ex-badge, .ex-card.has-weight > .check-icon { /* keep top row alignment */ }
+  .ex-card.has-weight .weight-row, .circuit-card.has-weight .weight-row { flex-basis: 100%; }
+  .ex-card.done .weight-row, .circuit-card.done .weight-row { opacity: 0.6; }
+
   .tip-box { background: var(--card); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 12px 14px; font-size: 19px; color: var(--muted); line-height: 1.5; margin-top: 8px; }
   .tip-box strong { color: var(--accent); display: block; margin-bottom: 3px; font-size: 17px; letter-spacing: 1px; text-transform: uppercase; }
   .divider { height: 1px; background: var(--border); margin: 14px 0; }
@@ -173,10 +186,10 @@
     <div class="progress-wrap"><div class="progress-top"><span>Progress</span><span id="prog-0">0 / 8 done</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-0" style="width:0%"></div></div></div>
     <div class="section"><div class="section-title">🔥 Warm-up · 5 min</div><div class="warmup-card"><div class="warmup-icon">🚶</div><div class="warmup-text"><strong>Treadmill</strong><span>Brisk walk · 2–3% incline · 5 min</span></div></div></div>
     <div class="section"><div class="section-title">💪 Strength · 25 min</div><div class="exercise-list" id="ex-0">
-      <div class="ex-card" onclick="toggleEx(this,'0')"><div class="ex-num">1</div><div class="ex-info"><div class="ex-name">Incline Bench Press</div><div class="ex-note">Controlled descent, full press</div></div><div class="ex-badge"><div class="sets">3×10</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
-      <div class="ex-card" onclick="toggleEx(this,'0')"><div class="ex-num">2</div><div class="ex-info"><div class="ex-name">Fly / Pec Station</div><div class="ex-note">Squeeze at center, don't lock elbows</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
-      <div class="ex-card" onclick="toggleEx(this,'0')"><div class="ex-num">3</div><div class="ex-info"><div class="ex-name">Dumbbell Shoulder Press</div><div class="ex-note">Seated or standing</div></div><div class="ex-badge"><div class="sets">3×10</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
-      <div class="ex-card" onclick="toggleEx(this,'0')"><div class="ex-num">4</div><div class="ex-info"><div class="ex-name">Curl Machine</div><div class="ex-note">Full range of motion</div></div><div class="ex-badge"><div class="sets">2×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'0')"><div class="ex-num">1</div><div class="ex-info"><div class="ex-name">Incline Bench Press</div><div class="ex-note">Controlled descent, full press</div></div><div class="ex-badge"><div class="sets">3×10</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="mon-incline-bench"><span class="weight-label">Weight</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'0')"><div class="ex-num">2</div><div class="ex-info"><div class="ex-name">Fly / Pec Station</div><div class="ex-note">Squeeze at center, don't lock elbows</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="mon-pec-fly"><span class="weight-label">Weight</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'0')"><div class="ex-num">3</div><div class="ex-info"><div class="ex-name">Dumbbell Shoulder Press</div><div class="ex-note">Seated or standing</div></div><div class="ex-badge"><div class="sets">3×10</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="mon-db-shoulder"><span class="weight-label">Each DB</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'0')"><div class="ex-num">4</div><div class="ex-info"><div class="ex-name">Curl Machine</div><div class="ex-note">Full range of motion</div></div><div class="ex-badge"><div class="sets">2×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="mon-curl"><span class="weight-label">Weight</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
     </div></div>
     <div class="section"><div class="section-title">🧘 Flexibility · 10 min</div><div class="exercise-list" id="flex-0">
       <div class="stretch-card" onclick="toggleStretch(this,'0')"><div class="stretch-icon">🤸</div><div class="stretch-info"><div class="stretch-name">Chest Doorway Stretch</div><div class="stretch-detail">3 × 30 sec</div></div><div class="stretch-check">✅</div></div>
@@ -193,7 +206,7 @@
     <div class="progress-wrap"><div class="progress-top"><span>Progress</span><span id="prog-1">0 / 8 done</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-1" style="width:0%"></div></div></div>
     <div class="section"><div class="section-title">🚣 Cardio · 25 min</div><div class="warmup-card"><div class="warmup-icon">🚣</div><div class="warmup-text"><strong>Rowing Machine</strong><span>Alternate 5 min easy / 5 min moderate push × 5 rounds</span></div></div></div>
     <div class="section"><div class="section-title">⚖️ Core & Balance · 10 min</div><div class="exercise-list" id="ex-1">
-      <div class="ex-card" onclick="toggleEx(this,'1')"><div class="ex-num">1</div><div class="ex-info"><div class="ex-name">Dumbbell Farmer's Carry</div><div class="ex-note">Walk across the gym floor · stand tall</div></div><div class="ex-badge"><div class="sets">3</div><div class="reps">passes</div></div><div class="check-icon">✅</div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'1')"><div class="ex-num">1</div><div class="ex-info"><div class="ex-name">Dumbbell Farmer's Carry</div><div class="ex-note">Walk across the gym floor · stand tall</div></div><div class="ex-badge"><div class="sets">3</div><div class="reps">passes</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="tue-farmers"><span class="weight-label">Each DB</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
       <div class="ex-card" onclick="toggleEx(this,'1')"><div class="ex-num">2</div><div class="ex-info"><div class="ex-name">Single-Leg Balance Stand</div><div class="ex-note">Near a wall if needed at first</div></div><div class="ex-badge"><div class="sets">3×20s</div><div class="reps">each leg</div></div><div class="check-icon">✅</div></div>
       <div class="ex-card" onclick="toggleEx(this,'1')"><div class="ex-num">3</div><div class="ex-info"><div class="ex-name">Dead Bug</div><div class="ex-note">Slow, controlled · press low back to mat</div></div><div class="ex-badge"><div class="sets">3×8</div><div class="reps">per side</div></div><div class="check-icon">✅</div></div>
       <div class="ex-card" onclick="toggleEx(this,'1')"><div class="ex-num">4</div><div class="ex-info"><div class="ex-name">Hip Flexor Kneeling Stretch</div><div class="ex-note">Lunge position, back knee on mat</div></div><div class="ex-badge"><div class="sets">2×30s</div><div class="reps">each side</div></div><div class="check-icon">✅</div></div>
@@ -213,10 +226,10 @@
     <div class="progress-wrap"><div class="progress-top"><span>Progress</span><span id="prog-2">0 / 8 done</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-2" style="width:0%"></div></div></div>
     <div class="section"><div class="section-title">🔥 Warm-up · 5 min</div><div class="warmup-card"><div class="warmup-icon">🚶</div><div class="warmup-text"><strong>Treadmill</strong><span>Easy pace · flat or light incline · 5 min</span></div></div></div>
     <div class="section"><div class="section-title">🦵 Strength · 25 min</div><div class="exercise-list" id="ex-2">
-      <div class="ex-card" onclick="toggleEx(this,'2')"><div class="ex-num">1</div><div class="ex-info"><div class="ex-name">Leg Press</div><div class="ex-note">Feet shoulder-width · full range</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
-      <div class="ex-card" onclick="toggleEx(this,'2')"><div class="ex-num">2</div><div class="ex-info"><div class="ex-name">Quad Extension</div><div class="ex-note">Leg lift machine · slow return</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
-      <div class="ex-card" onclick="toggleEx(this,'2')"><div class="ex-num">3</div><div class="ex-info"><div class="ex-name">Leg Curl / Hamstring</div><div class="ex-note">Controlled · don't rush the curl</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
-      <div class="ex-card" onclick="toggleEx(this,'2')"><div class="ex-num">4</div><div class="ex-info"><div class="ex-name">Squat Rack</div><div class="ex-note">Goblet squat or back squat · your call</div></div><div class="ex-badge"><div class="sets">3×10</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'2')"><div class="ex-num">1</div><div class="ex-info"><div class="ex-name">Leg Press</div><div class="ex-note">Feet shoulder-width · full range</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="wed-leg-press"><span class="weight-label">Weight</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'2')"><div class="ex-num">2</div><div class="ex-info"><div class="ex-name">Quad Extension</div><div class="ex-note">Leg lift machine · slow return</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="wed-quad-ext"><span class="weight-label">Weight</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'2')"><div class="ex-num">3</div><div class="ex-info"><div class="ex-name">Leg Curl / Hamstring</div><div class="ex-note">Controlled · don't rush the curl</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="wed-leg-curl"><span class="weight-label">Weight</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'2')"><div class="ex-num">4</div><div class="ex-info"><div class="ex-name">Squat Rack</div><div class="ex-note">Goblet squat or back squat · your call</div></div><div class="ex-badge"><div class="sets">3×10</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="wed-squat"><span class="weight-label">Weight</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
     </div></div>
     <div class="section"><div class="section-title">🧘 Flexibility · 10 min</div><div class="exercise-list" id="flex-2">
       <div class="stretch-card" onclick="toggleStretch(this,'2')"><div class="stretch-icon">🦵</div><div class="stretch-info"><div class="stretch-name">Standing Quad Stretch</div><div class="stretch-detail">3 × 30 sec each leg</div></div><div class="stretch-check">✅</div></div>
@@ -233,10 +246,10 @@
     <div class="progress-wrap"><div class="progress-top"><span>Progress</span><span id="prog-3">0 / 8 done</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-3" style="width:0%"></div></div></div>
     <div class="section"><div class="section-title">🔥 Warm-up · 5 min</div><div class="warmup-card"><div class="warmup-icon">⛰️</div><div class="warmup-text"><strong>Treadmill — Incline</strong><span>Slower pace · 5–6% incline · 5 min</span></div></div></div>
     <div class="section"><div class="section-title">💪 Strength · 25 min</div><div class="exercise-list" id="ex-3">
-      <div class="ex-card" onclick="toggleEx(this,'3')"><div class="ex-num">1</div><div class="ex-info"><div class="ex-name">Assisted Pull-up Machine</div><div class="ex-note">Full hang to chin over bar</div></div><div class="ex-badge"><div class="sets">3×8</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
-      <div class="ex-card" onclick="toggleEx(this,'3')"><div class="ex-num">2</div><div class="ex-info"><div class="ex-name">Lat Pulldown</div><div class="ex-note">Pull to upper chest · lean back slightly</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
-      <div class="ex-card" onclick="toggleEx(this,'3')"><div class="ex-num">3</div><div class="ex-info"><div class="ex-name">Seated Cable Row</div><div class="ex-note">Squeeze shoulder blades at end</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
-      <div class="ex-card" onclick="toggleEx(this,'3')"><div class="ex-num">4</div><div class="ex-info"><div class="ex-name">Dumbbell Rear Delt Fly</div><div class="ex-note">Hinge forward · elbows slightly bent</div></div><div class="ex-badge"><div class="sets">2×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'3')"><div class="ex-num">1</div><div class="ex-info"><div class="ex-name">Assisted Pull-up Machine</div><div class="ex-note">Full hang to chin over bar · less assist = harder</div></div><div class="ex-badge"><div class="sets">3×8</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="thu-assist-pullup"><span class="weight-label">Assist</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'3')"><div class="ex-num">2</div><div class="ex-info"><div class="ex-name">Lat Pulldown</div><div class="ex-note">Pull to upper chest · lean back slightly</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="thu-lat-pulldown"><span class="weight-label">Weight</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'3')"><div class="ex-num">3</div><div class="ex-info"><div class="ex-name">Seated Cable Row</div><div class="ex-note">Squeeze shoulder blades at end</div></div><div class="ex-badge"><div class="sets">3×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="thu-seated-row"><span class="weight-label">Weight</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="ex-card has-weight" onclick="toggleEx(this,'3')"><div class="ex-num">4</div><div class="ex-info"><div class="ex-name">Dumbbell Rear Delt Fly</div><div class="ex-note">Hinge forward · elbows slightly bent</div></div><div class="ex-badge"><div class="sets">2×12</div><div class="reps">reps</div></div><div class="check-icon">✅</div><div class="weight-row" data-key="thu-rear-delt"><span class="weight-label">Each DB</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
     </div></div>
     <div class="section"><div class="section-title">🧘 Flexibility · 10 min</div><div class="exercise-list" id="flex-3">
       <div class="stretch-card" onclick="toggleStretch(this,'3')"><div class="stretch-icon">🙋</div><div class="stretch-info"><div class="stretch-name">Lat Stretch (arm overhead, wall)</div><div class="stretch-detail">3 × 30 sec each side</div></div><div class="stretch-check">✅</div></div>
@@ -255,10 +268,10 @@
     <div class="divider"></div>
     <div class="section"><div class="section-title">🔄 Circuit · 3 Rounds</div><div class="exercise-list" id="ex-4">
       <div class="circuit-card" onclick="toggleEx(this,'4')"><div class="circuit-step">1</div><div class="ex-info"><div class="ex-name">Rowing Machine</div><div class="ex-note">3 min · moderate pace</div></div><div class="check-icon" style="display:none">✅</div></div>
-      <div class="circuit-card" onclick="toggleEx(this,'4')"><div class="circuit-step">2</div><div class="ex-info"><div class="ex-name">Dumbbell Goblet Squat</div><div class="ex-note">12 reps · chest up, heels down</div></div><div class="check-icon" style="display:none">✅</div></div>
-      <div class="circuit-card" onclick="toggleEx(this,'4')"><div class="circuit-step">3</div><div class="ex-info"><div class="ex-name">Dumbbell Bent-Over Row</div><div class="ex-note">12 reps each side</div></div><div class="check-icon" style="display:none">✅</div></div>
-      <div class="circuit-card" onclick="toggleEx(this,'4')"><div class="circuit-step">4</div><div class="ex-info"><div class="ex-name">Dumbbell Walking Lunges</div><div class="ex-note">10 steps each leg</div></div><div class="check-icon" style="display:none">✅</div></div>
-      <div class="circuit-card" onclick="toggleEx(this,'4')"><div class="circuit-step">5</div><div class="ex-info"><div class="ex-name">Assisted Pull-up</div><div class="ex-note">8 reps · full range</div></div><div class="check-icon" style="display:none">✅</div></div>
+      <div class="circuit-card has-weight" onclick="toggleEx(this,'4')"><div class="circuit-step">2</div><div class="ex-info"><div class="ex-name">Dumbbell Goblet Squat</div><div class="ex-note">12 reps · chest up, heels down</div></div><div class="check-icon" style="display:none">✅</div><div class="weight-row" data-key="fri-goblet"><span class="weight-label">DB</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="circuit-card has-weight" onclick="toggleEx(this,'4')"><div class="circuit-step">3</div><div class="ex-info"><div class="ex-name">Dumbbell Bent-Over Row</div><div class="ex-note">12 reps each side</div></div><div class="check-icon" style="display:none">✅</div><div class="weight-row" data-key="fri-bent-row"><span class="weight-label">Each DB</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="circuit-card has-weight" onclick="toggleEx(this,'4')"><div class="circuit-step">4</div><div class="ex-info"><div class="ex-name">Dumbbell Walking Lunges</div><div class="ex-note">10 steps each leg</div></div><div class="check-icon" style="display:none">✅</div><div class="weight-row" data-key="fri-lunges"><span class="weight-label">Each DB</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
+      <div class="circuit-card has-weight" onclick="toggleEx(this,'4')"><div class="circuit-step">5</div><div class="ex-info"><div class="ex-name">Assisted Pull-up</div><div class="ex-note">8 reps · full range · less assist = harder</div></div><div class="check-icon" style="display:none">✅</div><div class="weight-row" data-key="fri-assist-pullup"><span class="weight-label">Assist</span><input type="number" class="weight-input" inputmode="decimal" placeholder="—"><span class="weight-unit">lbs</span><span class="weight-saved">✓ saved</span></div></div>
       <div class="circuit-card" onclick="toggleEx(this,'4')"><div class="circuit-step">6</div><div class="ex-info"><div class="ex-name">Incline Treadmill Walk</div><div class="ex-note">3 min · active recovery between rounds</div></div><div class="check-icon" style="display:none">✅</div></div>
     </div></div>
     <div class="section"><div class="section-title">🧘 Wind-Down · 10 min</div><div class="exercise-list" id="flex-4">
@@ -303,6 +316,35 @@
   const REST_DURATION = 60;
   let timerInterval = null, timerRemaining = REST_DURATION, timerTotal = REST_DURATION, timerPaused = false;
   const CIRCUMFERENCE = 2 * Math.PI * 70;
+
+  // ===== WEIGHT PERSISTENCE =====
+  // Saved weights survive Reset, browser close, everything.
+  const WEIGHT_KEY = 'gym-routine-weights-v1';
+  function loadWeights() { try { const raw = localStorage.getItem(WEIGHT_KEY); return raw ? JSON.parse(raw) : {}; } catch(e) { return {}; } }
+  function saveWeights(w) { try { localStorage.setItem(WEIGHT_KEY, JSON.stringify(w)); } catch(e) {} }
+  function initWeightInputs() {
+    const weights = loadWeights();
+    document.querySelectorAll('.weight-row').forEach(row => {
+      const key = row.dataset.key;
+      const input = row.querySelector('.weight-input');
+      const saved = row.querySelector('.weight-saved');
+      if (!key || !input) return;
+      if (weights[key] !== undefined && weights[key] !== '') input.value = weights[key];
+      // Prevent card toggle when interacting with weight controls
+      ['click','mousedown','touchstart','touchend','pointerdown'].forEach(ev => {
+        row.addEventListener(ev, e => e.stopPropagation());
+      });
+      let t;
+      input.addEventListener('input', () => {
+        const all = loadWeights();
+        all[key] = input.value;
+        saveWeights(all);
+        clearTimeout(t);
+        saved.classList.add('show');
+        t = setTimeout(() => saved.classList.remove('show'), 1500);
+      });
+    });
+  }
 
   function updateProgress(day) {
     const exCards = document.querySelectorAll('#ex-'+day+' .ex-card, #ex-'+day+' .circuit-card');
@@ -402,6 +444,7 @@
     else badge.textContent = 'Rest Day 💤';
   }
 
+  initWeightInputs();
   autoDay();
 </script>
 </body>
