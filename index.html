@@ -330,9 +330,11 @@
       const saved = row.querySelector('.weight-saved');
       if (!key || !input) return;
       if (weights[key] !== undefined && weights[key] !== '') input.value = weights[key];
-      // Prevent card toggle when interacting with weight controls
+      // Only stop propagation on the input itself, so tapping it doesn't toggle
+      // the card. Tapping elsewhere on the card (including blank space in the
+      // weight row) should still check the exercise off and start the timer.
       ['click','mousedown','touchstart','touchend','pointerdown'].forEach(ev => {
-        row.addEventListener(ev, e => e.stopPropagation());
+        input.addEventListener(ev, e => e.stopPropagation());
       });
       let t;
       input.addEventListener('input', () => {
